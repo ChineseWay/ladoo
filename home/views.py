@@ -7,4 +7,4 @@ from utils.utils import BasicHandler
 
 class HomeHandler(BasicHandler):
     def get(self):
-        self.write("hello world")
+        self.render("index.html")

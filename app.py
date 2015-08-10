@@ -6,7 +6,10 @@ import sys
 import logging
 import argparse
 
-from tornado.ioloop import IOLoop
+import tornado
+import tornado.ioloop
+import tornado.httpserver
+
 from tornado.web import Application, url
 from settings import settings
 
@@ -45,15 +48,14 @@ class App(object):
 
     def listen(self, port=8888):
         app = Application(self.handlers, **settings)
-        app.listen(port)
-
+        server = tornado.httpserver.HTTPServer(app, xheaders=True)
+        server.listen(port, address="0.0.0.0")
 
 def main(port):
     app = App()
     app.listen(port)
     logging.warning("server starts to listen %d", port)
-
-    IOLoop.current().start() 
+    tornado.ioloop.IOLoop.instance().start() 
 
 
 if __name__ == '__main__':
