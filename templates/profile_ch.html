@@ -24,6 +24,10 @@
 			padding: 1em;
 			list-style: none;
 		}
+
+		.content {
+			text-align: center;	
+		}
 	</style>
 	<script type="text/javascript">
 		function showText(whichText) {
@@ -35,21 +39,22 @@
 	</script>
 </head>
 <body>
-	<h1>Chinese Text</h1>
+	<div class="content">
 	<ul>
 		<li>
-			<span data="t1" onclick="showText(this);return false;">title 1</span>
+			<span data="t1" onclick="showText(this);return false;">公司介绍</span>
 		</li>
 		<li>
-			<span data="t2" onclick="showText(this);return false;">title 2</span>
+			<span data="t2" onclick="showText(this);return false;">企业文化</span>
 		</li>
 		<li>
-			<span data="t3" onclick="showText(this);return false;">title 3</span>
+			<span data="t3" onclick="showText(this);return false;">服务中心</span>
 		</li>
 		<li>
-			<span data="t4" onclick="showText(this);return false;">title 4</span>
+			<span data="t4" onclick="showText(this);return false;">联系我们</span>
 		</li>
 	</ul>
+	</div>
 	<div style="clear:both"></div>
 	<p id="placeholder">t1xxxxx</p>
 	<h1>xxxx</h1>
