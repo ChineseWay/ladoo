@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>nav01</title>
+<style type="text/css"> 
+* {
+ margin:0;
+ padding:0;
+}
+body {
+ font-family:Verdana, Arial, Helvetica, sans-serif;
+ font-size:11px;
+ background:#666;
+}
+#nav {
+ margin:100px;
+ list-style:none;
+}
+#nav li {
+ float:left;
+}
+#nav li a {
+ padding:10px 20px;
+ background: url(images/nav.gif) repeat-x;
+ color:#fff;
+ text-decoration:none;
+ text-transform:capitalize; 
+ display:block;
+}
+#nav li a:hover {
+ color:#000;
+ background:#ccc;
+ border:0px solid #000;
+}
+#nav li a:active {
+ background: #333333;
+}
+</style>
+</head>
+<body>
+<ul id="nav">
+  <li><a href="#">home</a></li>
+  <li><a href="#">about</a></li>
+  <li><a href="#">news</a></li>
+  <li><a href="#">products</a></li>
+  <li><a href="#">services</a></li>
+  <li><a href="#">cloents</a></li>
+  <li><a href="#">blog</a></li>
+  <li><a href="#">link</a></li>
+</ul>
+</body>
+</html>

@@ -17,4 +17,5 @@ class EnglishProfileHandler(BasicHandler):
 
 class ChineseProfileHandler(BasicHandler):
     def get(self):
-        self.render("profile_ch.html")
+        #self.render("profile_ch.html")
+        self.render("test.html")
