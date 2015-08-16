@@ -14,19 +14,44 @@
 			font-weight: bold;
 			text-decoration: none;
 		}
-
-		u1 {
-			padding: 0;	
+		.nav {
+			font-family: arial, sans-serif;
+			margin: 50px 0px 0px 100px;
+			width: 1190px;
 		}
 
-		li {
+		.nav u1 {
+			padding: 0;	
+			border: 1px solid #000;
+			margin: 0 auto;
+		}
+
+		.nav ul li {
 			float: left;	
 			padding: 1em;
 			list-style: none;
+			border: solid 1px #888; 
 		}
 
-		.content {
-			text-align: center;	
+		.nav ul li span {
+			width: 80px;	
+			height: 28px;
+			line-height: 28px;
+			margin: 5px 10px;
+			font-size: 16px;
+			display: block;
+			text-align: center;
+			padding: 0 30px;
+		}
+	
+		p {
+			font-family: arial, sans-serif;	
+			font-size: 13px;
+		}
+
+		#placeHolder {
+			margin: 50px 40px auto 40px;
+
 		}
 	</style>
 	<script type="text/javascript">
@@ -39,7 +64,8 @@
 	</script>
 </head>
 <body>
-	<div class="content">
+	<div class="header"></div> 
+	<div class="nav">
 	<ul>
 		<li>
 			<span data="t1" onclick="showText(this);return false;">公司介绍</span>
