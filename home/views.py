@@ -3,7 +3,7 @@
 
 
 from utils.utils import BasicHandler
-
+from home.models import Mail
 
 class HomeHandler(BasicHandler):
     def get(self):
@@ -42,8 +42,13 @@ class SendCloudHandler(BasicHandler):
 		if not content:
 			msg += "<p>内容为空</p>"
 
- 		print sender, reciever, subject, content
-		
-		ret = "<p><a href='/send_mail'>返回</a></p>"
-		msg += ret 
+ 		sender = sender[0]
+ 		reciever = reciever[0]
+ 		subject = subject[0]
+ 		content = content[0]
+
+		resp = Mail().send(reciever, sender, subject, content)
+
+		msg += "<p>%s</p>" % str(resp)	
+		msg += "<p><a href='/send_mail'>返回</a></p>"
 		self.write(msg)
