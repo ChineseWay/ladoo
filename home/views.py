@@ -42,7 +42,7 @@ class SendCloudHandler(BasicHandler):
 		if not content:
 			msg += "<p>内容为空</p>"
 
- 		print sender, reciever, subjec没有发件人t, co
+ 		print sender, reciever, subject, content
 		
 		ret = "<p><a href='/send_mail'>返回</a></p>"
 		msg += ret 
