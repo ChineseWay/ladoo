@@ -3,6 +3,7 @@
 </head>
 <body>
 	<form action="/send_mail" method="post">
+	{% module xsrf_form_html() %}
 		<table>
 			<tr>
 				<td>收件人:</td>
