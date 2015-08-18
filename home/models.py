@@ -17,12 +17,16 @@ class Mail(object):
 	    	"api_user": self.API_USER, 	# 使用api_user和api_key进行验证                       
 		    "api_key" : self.API_KEY,                                             
 		    "to" : to, 					# 收件人地址, 用正确邮件地址替代, 多个地
-		    "from" : _from, 			# 发信人, 用正确邮件地址替代     
-		    "fromname" : "Ladoo Freight",                                                    
+		    "from" : _from, 			# 发信人, 用正确邮件地址替代                                                        
 		    "subject" : subject,                              
 		    "html": content,  
 		    "resp_email_id": "true",
 		}
 
 		r = requests.post(self.URL, data=params)
-		return r.text  
+		res = r.json()  
+		if res["message"] = "success":
+			return "success"
+		if res["message"] = "error":
+			return str(res["errors"])
+		return str(r.text)
