@@ -31,5 +31,19 @@ class SendCloudHandler(BasicHandler):
 		subject = self.request.arguments.get("subject")
 		content = self.request.arguments.get("content")
 
-		print sender, reciever, subject, content 
-		self.write("OK")
+		msg = ""
+		if not sender:
+			msg += "<p>没有发件人</p>"
+
+		if not reciever:
+			msg += "<p>没有收件人</p>"
+		if not subject:
+			msg += "<p>没有标题</p>"
+		if not content:
+			msg += "<p>内容为空</p>"
+
+ 		print sender, reciever, subjec没有发件人t, co
+		
+		ret = "<p><a href='/send_mail'>返回</a></p>"
+		msg += ret 
+		self.write(msg)
