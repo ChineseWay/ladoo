@@ -25,8 +25,8 @@ class Mail(object):
 
 		r = requests.post(self.URL, data=params)
 		res = r.json()  
-		if res["message"] = "success":
+		if res["message"] == "success":
 			return "success"
-		if res["message"] = "error":
+		if res["message"] == "error":
 			return str(res["errors"])
 		return str(r.text)
