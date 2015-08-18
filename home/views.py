@@ -24,3 +24,7 @@ class ChineseProfileHandler(BasicHandler):
 class SendCloudHandler(BasicHandler):
 	def get(self):
 		self.render("sendmail.html")
+
+	def post(self):
+		print self.request.arguments
+		self.write("OK")
