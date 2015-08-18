@@ -26,5 +26,10 @@ class SendCloudHandler(BasicHandler):
 		self.render("sendmail.html")
 
 	def post(self):
-		print self.request.arguments
+		sender = self.request.arguments.get("sender")
+		reciever = self.request.arguments.get("reciever")
+		subject = self.request.arguments.get("subject")
+		content = self.request.arguments.get("content")
+
+		print sender, reciever, subject, content 
 		self.write("OK")
