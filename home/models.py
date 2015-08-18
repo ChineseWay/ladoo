@@ -24,5 +24,5 @@ class Mail(object):
 		    "resp_email_id": "true",
 		}
 
-		r = requests.post(url, data=params)
+		r = requests.post(self.URL, data=params)
 		return r.text  
