@@ -2,7 +2,7 @@
 <head>
 </head>
 <body>
-	<form action="/send_mail" method="post">
+	<form id="emailform" action="/send_mail" method="post">
 	{% module xsrf_form_html() %}
 		<table>
 			<tr>
@@ -20,9 +20,8 @@
 			<tr>
 				<td>邮件内容:</td>
 				<td>
-					<textarea rows="30" cols="100">
+					<textarea name="content" form="emailform" rows="30" cols="100">
 					</textarea>
-
 				</td>
 			<tr>
 			<tr>
