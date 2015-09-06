@@ -3,8 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <style>
+        #container {
+            border: 10px dashed #ccc;
+            width: 300px;
+            min-height: 300px;
+            margin: 20px auto;
+        }
+        #container.hover {
+            border: 10px dashed #0c0;
+        }
+    </style>
+    <script src="/static/jquery.js"></script>
 </head>
 <body>
+    <!--<div id="container">-->
+        <!--Drag and Uplad-->
+    <!--</div>-->
+    <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+        {% module xsrf_form_html() %}
+        <input type="file" id="upload" name="upload" /> <br/>
+        <input type="submit" value="上传用户邮件csv文件" />
+    </form>
+	<form id="emailform" action="/send_mail" method="post">
+	{% module xsrf_form_html() %}
+		<table>
+			<tr>
+				<td>收件人:</td>
+				{% set userList = ";".join(users) %}
+                <td><input type="text" style="width:500px" name="receiver" value="{{userList}}"/></td>
+			<tr>
+			<tr>
+				<td>发件人:</td>
+				<td><input type="text" style="width:500px" name="sender"/></td>
+			<tr>
+			<tr>
+				<td>邮件标题:</td>
+				<td><input type="text" style="width:500px" name="subject"/></td>
+			<tr>
+			<tr>
+				<td>邮件内容:</td>
+				<td>
+					<textarea name="content" form="emailform" rows="30" cols="100">
+					</textarea>
+				</td>
+			<tr>
+			<tr>
+				<td></td>
+				<td><input type='submit' value='发送'/></td>
+			</tr>
+		</table>
+	</form>
 
 </body>
+
 </html>

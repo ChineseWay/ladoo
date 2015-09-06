@@ -3,10 +3,11 @@ __author__ = 'zhuangzebo'
 
 
 import requests
+import datetime
 
+from settings import MAILGUN_API, MAILGUN_KEY
+from utils.utils import MongoConn, RedisConn
 
-API = "https://api.mailgun.net/v3/ladoo-freight.com/messages"
-KEY = "key-b3837395590b9ae45fbd3a534ea5ea06"
 
 
 class MailGun(object):
@@ -17,8 +18,8 @@ class MailGun(object):
 
     def sendMail(self, from_, to=[], subject="", text=""):
         return self._request.post(
-            API,
-            auth=("api", KEY),
+            MAILGUN_API,
+            auth=("api", MAILGUN_KEY),
             data= {
                 "from": from_,
                 "to": to,
@@ -27,21 +28,41 @@ class MailGun(object):
             }
         )
 
-    def addUser(self, users=[]):
-        for u in users:
-            if u in self._users:
+
+class MailUser(object):
+
+    USER_ID_KEY = "user:id"
+
+    def __init__(self):
+        self.mailGun = MailGun()
+        # self.mongoConn = MongoConn.getConn()
+        # self.rdsConn = RedisConn.getConn()
+        self._users = set()
+        self._users_send = []
+
+    # def genId(self):
+    #     return self.rdsConn.incr(MailUser.USER_ID_KEY)
+
+    def add(self, users=[]):
+        self._users = self._users.union(users)
+
+    def get(self):
+        return list(self._users)
+
+    def sendMail(self, from_, to, subject, text):
+        for u in to:
+            try:
+                res = self.mailGun.sendMail(from_, u, subject, text)
+                res = res.json()
+            except Exception, e:
+                self._users_send.append((u, 0))
                 continue
-            self._users.append(u)
-        return
-
-    def getUser(self):
-        return self._users
-
-    def getByPage(self, page=1, pageSize=50):
-        total = len(self._users)
-        return total, self._user[pageSize*(page-1): pageSize*page]
+            print res
+            self._users_send.append((u, 1))
 
 
+
+mailUser = MailUser()
 
 if __name__ == "__main__":
     mg = MailGun()

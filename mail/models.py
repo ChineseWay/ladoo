@@ -1,7 +1,30 @@
 __author__ = 'zhuangzebo'
 
-from mail import mailGun
+# from mail import mailGun
+from mail import mailUser
+
+def uploadUser(body):
+    lines = body.split("\n")
+    if len(lines) == 1:
+        lines = body.split("\r")
+
+    users = [str(u) for u in lines]
+    mailUser.add(users)
 
 
-def uploadUser(self, body):
-    pass
+def getUsers():
+    users = mailUser.get()
+    return users
+
+
+def sendMail(sender, receiver, subject, text):
+    receiver = receiver.split(";")
+    if not receiver:
+        return
+
+    mailUser.sendMail(sender, receiver, subject, text)
+    return
+
+
+
+

@@ -1,8 +1,9 @@
 __author__ = 'zhuangzebo'
 
-from mail.views import SendMailHandler
+from views import SendMailHandler, UploadUserHandler
 
 
 urls = [
     (r"/send_mail/?", SendMailHandler),
+    (r"/upload/?", UploadUserHandler)
 ]
