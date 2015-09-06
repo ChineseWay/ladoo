@@ -53,14 +53,14 @@ class MailUser(object):
         for u in to:
             try:
                 res = self.mailGun.sendMail(from_, u, subject, text)
-                res = res.json()
+                print res.json()
             except Exception, e:
-                self._users_send.append((u, 0))
-                continue
-            print res
-            self._users_send.append((u, 1))
-
-
+                print e
+            try:
+                self._users.remove(u)
+            except:
+                pass
+        self._users = set()
 
 mailUser = MailUser()
 
