@@ -34,7 +34,6 @@ class SendMailHandler(BasicHandler):
 		subject = self.request.arguments.get("subject")
 		content = self.request.arguments.get("content")
 
-		print self.request.arguments
 		msg = ""
 		if not sender:
 			msg += "<p>没有发件人</p>"
