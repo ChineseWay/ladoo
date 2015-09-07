@@ -13,7 +13,11 @@ def uploadUser(body):
         for u in line.split(','):
             if not u:
                 continue
-            users.append(str(u))
+            try:
+                u = u.encode('gbk')
+            except:
+                continue
+            users.append(u)
     users = [str(u) for u in lines]
     mailUser.add(users)
 
