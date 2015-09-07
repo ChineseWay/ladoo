@@ -51,6 +51,8 @@ class MailUser(object):
 
     def sendMail(self, from_, to, subject, text):
         for u in to:
+            if not u:
+                continue
             try:
                 res = self.mailGun.sendMail(from_, u, subject, text)
                 print res.json()
