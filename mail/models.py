@@ -17,8 +17,10 @@ def uploadUser(body):
                 u = u.encode('gbk')
             except:
                 continue
+            u = u.strip('\n')
+            u = u.strip('\r')
             users.append(u)
-    users = [str(u) for u in lines]
+    print users
     mailUser.add(users)
 
 
